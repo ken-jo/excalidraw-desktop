@@ -13,8 +13,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "electron": "^32.1.2",
-    "electron-builder": "^25.0.5"
+    "electron": "^39.2.7",
+    "electron-builder": "^26.4.0"
   },
   "build": {
     "appId": "app.excalidraw",

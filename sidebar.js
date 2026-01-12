@@ -128,7 +128,11 @@
     const stStr = localStorage.getItem('excalidraw-state') || '{}';
     if (el) {
       const st = JSON.parse(stStr);
-      const name = st.name || 'untitled';
+      let name = st.name || 'untitled';
+      // Remove [auto] prefix if manually saving
+      if (name.startsWith('[auto]')) {
+        name = name.replace('[auto]', '');
+      }
       const out = {
         type: 'excalidraw', version: 2, source: 'https://excalidraw.com',
         elements: JSON.parse(el), appState: st
@@ -297,11 +301,15 @@
     const stStr = localStorage.getItem('excalidraw-state') || '{}';
     if (el) {
       const st = JSON.parse(stStr);
+      let name = st.name || 'untitled';
+      if (!name.startsWith('[auto]')) {
+        name = '[auto]' + name;
+      }
       const out = {
         type: 'excalidraw', version: 2, source: 'https://excalidraw.com',
         elements: JSON.parse(el), appState: st
       };
-      window.electronAPI.saveFile(st.name || 'untitled', JSON.stringify(out));
+      window.electronAPI.saveFile(name, JSON.stringify(out));
       fetchFiles();
     }
   });
