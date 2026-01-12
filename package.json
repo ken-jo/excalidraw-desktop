@@ -26,6 +26,9 @@
       "build/**/*",
       "node_modules/**/*",
       "index.js",
+      "sidebar.js",
+      "preload.js",
+      "resources/**/*",
       "package.json"
     ],
     "mac": {
